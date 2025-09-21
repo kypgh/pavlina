@@ -1,26 +1,37 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Your Custom Color Palette */
+  --white: #fff7e7;
+  --background: #DFC99B;
+  --yellow: #F0C446;
+  --dark-yellow: #9E8A3D;
+  --text: #A4935B;
+  --dark: #4D4C1A;
 }
 
 @theme inline {
+  /* Custom Colors */
+  --color-white: var(--white);
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-yellow: var(--yellow);
+  --color-dark-yellow: var(--dark-yellow);
+  --color-text: var(--text);
+  --color-dark: var(--dark);
+  
+  /* Typography */
+  --font-title: "Marta Bold", serif;
+  --font-body: "Montserrat", sans-serif;
+  
+  /* Default background and foreground */
+  --color-primary: var(--yellow);
+  --color-secondary: var(--dark-yellow);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
 }
