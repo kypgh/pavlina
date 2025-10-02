@@ -4,8 +4,18 @@ import { urlFor } from '@/sanity/client'
 import Image from 'next/image'
 import { useState } from 'react'
 
+interface ImageAsset {
+  _ref: string
+  _type: string
+}
+
+interface PortableTextImageValue {
+  asset?: ImageAsset
+  alt?: string
+}
+
 // Component for rendering images in portable text
-function PortableTextImage({ value }: { value: { asset?: any; alt?: string } }) {
+function PortableTextImage({ value }: { value: PortableTextImageValue }) {
   const [imageError, setImageError] = useState(false)
   const [imageLoading, setImageLoading] = useState(true)
 
