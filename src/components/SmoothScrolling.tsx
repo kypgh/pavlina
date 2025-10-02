@@ -9,6 +9,11 @@ export default function SmoothScrolling() {
   const lenisRef = useRef<Lenis | null>(null)
 
   useEffect(() => {
+    // Don't initialize Lenis on studio routes
+    if (router.pathname.startsWith('/studio')) {
+      return
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -27,12 +32,12 @@ export default function SmoothScrolling() {
     return () => {
       lenis.destroy()
     }
-  }, [])
+  }, [router.pathname])
 
-  // Handle route changes - scroll to top
+  // Handle route changes - scroll to top (but not on studio routes)
   useEffect(() => {
-    const handleRouteChange = () => {
-      if (lenisRef.current) {
+    const handleRouteChange = (url: string) => {
+      if (lenisRef.current && !url.startsWith('/studio')) {
         lenisRef.current.scrollTo(0, { immediate: false })
       }
     }
