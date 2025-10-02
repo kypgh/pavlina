@@ -1,4 +1,5 @@
 import { PreviewProps } from 'sanity'
+import Image from 'next/image'
 
 interface BlogPostPreviewProps extends PreviewProps {
   title?: string
@@ -18,12 +19,12 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
     <div style={{ padding: '12px', border: '1px solid #e1e5e9', borderRadius: '4px' }}>
       <div style={{ display: 'flex', gap: '12px' }}>
         {featuredImage?.asset?.url && (
-          <img
+          <Image
             src={featuredImage.asset.url}
             alt={title || 'Blog post'}
+            width={80}
+            height={60}
             style={{
-              width: '80px',
-              height: '60px',
               objectFit: 'cover',
               borderRadius: '4px',
             }}

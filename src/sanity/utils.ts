@@ -1,6 +1,5 @@
 import { client, urlFor } from './client'
 import { 
-  blogPostsQuery, 
   blogPostBySlugQuery, 
   blogPostSlugsQuery,
   publishedBlogPostsQuery 

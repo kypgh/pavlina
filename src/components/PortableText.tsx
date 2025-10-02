@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 // Component for rendering images in portable text
-function PortableTextImage({ value }: { value: any }) {
+function PortableTextImage({ value }: { value: { asset?: any; alt?: string } }) {
   const [imageError, setImageError] = useState(false)
   const [imageLoading, setImageLoading] = useState(true)
 
