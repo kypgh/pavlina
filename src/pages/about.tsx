@@ -1,117 +1,169 @@
 import Navigation from '@/components/Navigation'
+import BookingModal from '@/components/BookingModal'
 import { FadeInUp, FadeInUpImmediate, FadeInUpRobust } from '@/components/AnimatedSection'
 import { aboutContent } from '@/content/siteContent'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function About() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        {/* Background Image Placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow/20 to-yellow/40">
-          {/* Background image placeholder - empty src for now */}
-        </div>
-        
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-sage-green py-20 px-6">
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
           <FadeInUpImmediate>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-title text-dark mb-6">
-              Η Ιστορία Μου
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-title text-white mb-6">
+              {aboutContent.hero.title}
             </h1>
           </FadeInUpImmediate>
           
           <FadeInUpImmediate delay={0.2}>
-            <p className="text-lg md:text-xl text-text max-w-2xl mx-auto leading-relaxed">
-              Μια διαδρομή αυτογνωσίας και ενδυνάμωσης που με οδήγησε στο coaching
+            <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto leading-relaxed opacity-95">
+              {aboutContent.hero.subtitle}
             </p>
           </FadeInUpImmediate>
         </div>
       </section>
 
-      <main className="px-6 py-16">
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Personal Journey Section */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-20">
-            
-            {/* Professional Portrait */}
-            <FadeInUp>
-              <div className="relative aspect-[3/4] rounded-2xl shadow-lg overflow-hidden bg-background/50">
-                {aboutContent.image ? (
-                  <Image 
-                    src={aboutContent.image} 
-                    alt="Pavlina - Professional Portrait" 
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-text/50">
-                    <span className="text-dark font-title text-xl">Professional Portrait</span>
-                  </div>
-                )}
-              </div>
-            </FadeInUp>
-
-            {/* Story Content */}
-            <div className="space-y-6">
-              <FadeInUpRobust delay={0.2}>
-                <div className="prose prose-lg max-w-none">
-                  {aboutContent.content.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="text-text leading-relaxed mb-6 text-base md:text-lg">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </FadeInUpRobust>
-            </div>
-          </div>
-
-          {/* Professional Credentials Section */}
-          <FadeInUp>
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-4xl font-title text-dark mb-4">
-                  Επαγγελματικά Προσόντα
-                </h2>
-                <p className="text-text text-lg max-w-2xl mx-auto">
-                  Η εκπαίδευση και η εμπειρία που με οδηγούν στην υποστήριξή σου
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                {aboutContent.credentials.map((credential, index) => (
-                  <FadeInUp key={index} delay={index * 0.1}>
-                    <div className="bg-yellow/10 rounded-xl p-6 border-l-4 border-yellow">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-3 h-3 bg-yellow rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-dark font-medium text-lg leading-relaxed">
-                          {credential}
-                        </p>
-                      </div>
+      <main>
+        {/* Section 1: Η δική μου διαδρομή - With photo */}
+        <section className="bg-cream py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-center">
+              {/* Professional Portrait */}
+              <FadeInUp>
+                <div className="relative aspect-[3/4] rounded-3xl shadow-2xl overflow-hidden">
+                  {aboutContent.image ? (
+                    <Image 
+                      src={aboutContent.image} 
+                      alt="Pavlina - Professional Portrait" 
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-sage-green-light">
+                      <span className="text-dark font-title text-xl">Professional Portrait</span>
                     </div>
-                  </FadeInUp>
-                ))}
-              </div>
-
-              {/* Call to Action */}
-              <FadeInUp delay={0.4}>
-                <div className="text-center mt-12 p-8 bg-yellow/10 rounded-xl">
-                  <p className="text-text text-lg leading-relaxed mb-6">
-                    Αν νιώθεις κι εσύ ότι ήρθε η στιγμή να ξεπεράσεις τις φωνές που σε κρατούν πίσω 
-                    και να βρεις ξανά το δικό σου φως, είμαι εδώ για να σε υποστηρίξω σε αυτό το ταξίδι.
-                  </p>
-                  <p className="text-dark font-title text-xl">
-                    Γιατί μέσα σου υπάρχει ήδη ό,τι χρειάζεσαι για να λάμψεις!
-                  </p>
+                  )}
                 </div>
               </FadeInUp>
+
+              {/* Journey Content */}
+              <div className="lg:col-span-2">
+                <FadeInUpRobust delay={0.2}>
+                  <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+                    Η δική μου διαδρομή
+                  </h2>
+                  <p className="text-dark leading-relaxed text-lg md:text-xl">
+                    {aboutContent.journey}
+                  </p>
+                </FadeInUpRobust>
+              </div>
             </div>
-          </FadeInUp>
-        </div>
+          </div>
+        </section>
+
+        {/* Section 2: Η αναζήτηση */}
+        <section className="bg-white py-20 px-6">
+          <div className="max-w-5xl mx-auto">
+            <FadeInUp>
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
+                Η αναζήτηση
+              </h2>
+              <div className="prose prose-xl max-w-none">
+                {aboutContent.search.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-dark leading-relaxed mb-8 text-lg md:text-xl">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </FadeInUp>
+          </div>
+        </section>
+
+        {/* Section 3: Σήμερα… */}
+        <section className="bg-soft-yellow-medium py-20 px-6">
+          <div className="max-w-5xl mx-auto">
+            <FadeInUp>
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
+                Σήμερα…
+              </h2>
+              <div className="prose prose-xl max-w-none">
+                <p className="text-dark leading-relaxed text-lg md:text-xl">
+                  {aboutContent.today}
+                </p>
+              </div>
+            </FadeInUp>
+          </div>
+        </section>
+
+        {/* Section 4: Η φιλοσοφία μου */}
+        <section className="bg-white py-20 px-6">
+          <div className="max-w-5xl mx-auto">
+            <FadeInUp>
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
+                Η φιλοσοφία μου
+              </h2>
+              <div className="prose prose-xl max-w-none">
+                <p className="text-dark leading-relaxed text-lg md:text-xl">
+                  {aboutContent.philosophy}
+                </p>
+              </div>
+            </FadeInUp>
+          </div>
+        </section>
+
+        {/* Section 5: Η Αποστολή μου - Green block */}
+        <section className="bg-sage-green py-20 px-6">
+          <div className="max-w-5xl mx-auto text-center">
+            <FadeInUp>
+              <h2 className="text-4xl md:text-5xl font-title text-white mb-10">
+                Η Αποστολή μου
+              </h2>
+              <p className="text-white opacity-95 leading-relaxed text-xl md:text-2xl">
+                {aboutContent.mission}
+              </p>
+            </FadeInUp>
+          </div>
+        </section>
+
+        {/* Section 6: Το Όραμά μου - Cream block */}
+        <section className="bg-cream py-20 px-6">
+          <div className="max-w-5xl mx-auto text-center">
+            <FadeInUp>
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-10">
+                Το Όραμά μου
+              </h2>
+              <p className="text-dark leading-relaxed text-xl md:text-2xl">
+                {aboutContent.vision}
+              </p>
+            </FadeInUp>
+          </div>
+        </section>
+
+        {/* Section 7: Closing quote with CTA */}
+        <section className="bg-sage-green py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <FadeInUp>
+              <p className="text-white opacity-95 text-xl md:text-2xl leading-relaxed mb-10 italic">
+                {aboutContent.closingQuote}
+              </p>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-yellow hover:bg-dark-yellow text-dark font-semibold px-12 py-5 rounded-full transition-all duration-300 text-xl hover:scale-105 shadow-lg"
+              >
+                Κλείσε τη συνεδρία σου τώρα!
+              </button>
+            </FadeInUp>
+          </div>
+        </section>
       </main>
+
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }

@@ -1,37 +1,255 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 :root {
-  /* Your Custom Color Palette */
-  --white: #fff7e7;
-  --background: #DFC99B;
-  --yellow: #F0C446;
-  --dark-yellow: #9E8A3D;
-  --text: #A4935B;
-  --dark: #4D4C1A;
+  /* Updated Color Palette - Reduced Brown Dominance */
+  --cream: #fff7e7;
+  --pure-white: #ffffff;
+  --beige: #dfc99b; /* Used sparingly, no longer dominant */
+  --yellow: #f0c446;
+  --dark-yellow: #9e8a3d;
+  --sage-green: #4d4c1a;
+  --sage-green-light: rgba(77, 76, 26, 0.1);
+  --sage-green-medium: rgba(77, 76, 26, 0.15);
+  --soft-yellow: rgba(240, 196, 70, 0.15);
+  --soft-yellow-medium: rgba(240, 196, 70, 0.25);
+  --brown-text: #a4935b; /* Used sparingly for secondary text only */
+  --dark-text: #4d4c1a;
 }
 
 @theme inline {
   /* Custom Colors */
-  --color-white: var(--white);
-  --color-background: var(--background);
+  --color-cream: var(--cream);
+  --color-white: var(--pure-white);
+  --color-beige: var(--beige);
   --color-yellow: var(--yellow);
   --color-dark-yellow: var(--dark-yellow);
-  --color-text: var(--text);
-  --color-dark: var(--dark);
-  
+  --color-sage-green: var(--sage-green);
+  --color-sage-green-light: var(--sage-green-light);
+  --color-sage-green-medium: var(--sage-green-medium);
+  --color-soft-yellow: var(--soft-yellow);
+  --color-soft-yellow-medium: var(--soft-yellow-medium);
+  --color-brown-text: var(--brown-text);
+  --color-dark-text: var(--dark-text);
+
   /* Typography */
   --font-title: "Marta Bold", serif;
   --font-body: "Montserrat", sans-serif;
-  
-  /* Default background and foreground */
+
+  /* Default background and foreground - Updated to light backgrounds */
   --color-primary: var(--yellow);
   --color-secondary: var(--dark-yellow);
+  --color-background-primary: var(--cream);
+  --color-background-secondary: var(--pure-white);
 }
 
 body {
-  background: var(--background);
-  color: var(--text);
+  background: var(--cream);
+  color: var(--dark-text);
   font-family: var(--font-body);
   line-height: 1.6;
+}
+
+/* Utility Classes for New Color Scheme */
+
+/* Background Utilities */
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.bg-white {
+  background-color: var(--pure-white);
+}
+
+.bg-sage-green {
+  background-color: var(--sage-green);
+  color: var(--pure-white);
+}
+
+.bg-sage-green-light {
+  background-color: var(--sage-green-light);
+}
+
+.bg-sage-green-medium {
+  background-color: var(--sage-green-medium);
+}
+
+.bg-soft-yellow {
+  background-color: var(--soft-yellow);
+}
+
+.bg-soft-yellow-medium {
+  background-color: var(--soft-yellow-medium);
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
+/* Text Color Utilities */
+.text-dark {
+  color: var(--dark-text);
+}
+
+.text-brown {
+  color: var(--brown-text);
+}
+
+.text-white {
+  color: var(--pure-white);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+/* Border Utilities */
+.border-sage-green {
+  border-color: var(--sage-green);
+}
+
+.border-yellow {
+  border-color: var(--yellow);
+}
+
+.border-sage-green-medium {
+  border-color: var(--sage-green-medium);
+}
+
+/* Accent Utilities */
+.accent-sage {
+  border-left: 4px solid var(--sage-green);
+}
+
+.accent-yellow {
+  border-left: 4px solid var(--yellow);
+}
+
+/* Section Utilities */
+.section-light {
+  background-color: var(--cream);
+  padding: 4rem 2rem;
+}
+
+.section-white {
+  background-color: var(--pure-white);
+  padding: 4rem 2rem;
+}
+
+.section-sage {
+  background-color: var(--sage-green);
+  color: var(--pure-white);
+  padding: 4rem 2rem;
+}
+
+.section-sage-light {
+  background-color: var(--sage-green-light);
+  padding: 4rem 2rem;
+}
+
+.section-yellow {
+  background-color: var(--soft-yellow);
+  padding: 4rem 2rem;
+}
+
+.section-yellow-medium {
+  background-color: var(--soft-yellow-medium);
+  padding: 4rem 2rem;
+}
+
+/* Button Utilities */
+.btn-yellow {
+  background-color: var(--yellow);
+  color: var(--dark-text);
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-yellow:hover {
+  background-color: var(--dark-yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(240, 196, 70, 0.3);
+}
+
+.btn-sage {
+  background-color: var(--sage-green);
+  color: var(--pure-white);
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-sage:hover {
+  background-color: rgba(77, 76, 26, 0.85);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(77, 76, 26, 0.3);
+}
+
+/* Card Utilities */
+.card-sage {
+  background-color: var(--sage-green-light);
+  border: 1px solid var(--sage-green-medium);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.card-sage:hover {
+  box-shadow: 0 8px 24px rgba(77, 76, 26, 0.15);
+  transform: translateY(-4px);
+}
+
+.card-yellow {
+  background-color: var(--soft-yellow);
+  border: 1px solid var(--soft-yellow-medium);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.card-yellow:hover {
+  box-shadow: 0 8px 24px rgba(240, 196, 70, 0.2);
+  transform: translateY(-4px);
+}
+
+.card-white {
+  background-color: var(--pure-white);
+  border: 1px solid var(--sage-green-light);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card-white:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Focus States for Forms */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(240, 196, 70, 0.2);
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .section-light,
+  .section-white,
+  .section-sage,
+  .section-sage-light,
+  .section-yellow,
+  .section-yellow-medium {
+    padding: 2rem 1rem;
+  }
 }
