@@ -19,13 +19,60 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   useEffect(() => {
     if (isOpen) {
+      // Store original values and current scroll position
+      const originalBodyOverflow = document.body.style.overflow;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalBodyPosition = document.body.style.position;
+      const originalBodyTop = document.body.style.top;
+      const scrollY = window.scrollY;
+
+      // Prevent scrolling on both body and html while preserving scroll position
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+
+      // Prevent wheel events on the document
+      const preventWheelScroll = (e: WheelEvent) => {
+        if (
+          !e.target ||
+          !(e.target as Element).closest("[data-modal-content]")
+        ) {
+          e.preventDefault();
+        }
+      };
+
+      const preventTouchScroll = (e: TouchEvent) => {
+        if (
+          !e.target ||
+          !(e.target as Element).closest("[data-modal-content]")
+        ) {
+          e.preventDefault();
+        }
+      };
+
+      document.addEventListener("wheel", preventWheelScroll, {
+        passive: false,
+      });
+      document.addEventListener("touchmove", preventTouchScroll, {
+        passive: false,
+      });
+
+      return () => {
+        document.body.style.overflow = originalBodyOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.position = originalBodyPosition;
+        document.body.style.top = originalBodyTop;
+        document.body.style.width = "";
+        
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+        
+        document.removeEventListener("wheel", preventWheelScroll);
+        document.removeEventListener("touchmove", preventTouchScroll);
+      };
     }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
   }, [isOpen]);
   const [formData, setFormData] = useState({
     name: "",
@@ -116,6 +163,16 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
   };
 
+  const handleModalScroll = (e: React.UIEvent) => {
+    // Allow scrolling within the modal content
+    e.stopPropagation();
+  };
+
+  const handleModalWheel = (e: React.WheelEvent) => {
+    // Allow wheel scrolling within modal content
+    e.stopPropagation();
+  };
+
   if (!mounted) return null;
 
   const modalContent = (
@@ -127,18 +184,21 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           exit={{ opacity: 0 }}
           onClick={handleBackdropClick}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-dark/60 backdrop-blur-sm px-4"
-          style={{ margin: 0 }}
+          style={{ margin: 0, overflow: "hidden" }}
+          onWheel={(e) => e.preventDefault()}
+          onTouchMove={(e) => e.preventDefault()}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
+            data-modal-content
           >
             {/* Header */}
-            <div className="bg-dark rounded-t-3xl px-8 py-6 relative">
+            <div className="bg-dark rounded-t-3xl px-8 py-6 relative flex-shrink-0">
               <button
                 onClick={onClose}
                 className="absolute top-6 right-6 text-white hover:text-yellow transition-colors text-2xl"
@@ -155,7 +215,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             </div>
 
             {/* Form */}
-            <div className="px-8 py-8">
+            <div
+              className="px-8 py-8 overflow-y-auto flex-1"
+              onScroll={handleModalScroll}
+              onWheel={handleModalWheel}
+              data-modal-content
+            >
               {submitSuccess ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -234,7 +299,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       placeholder="email@example.com"
                     />
                     {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
 
@@ -260,7 +327,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       placeholder="+30 123 456 7890"
                     />
                     {errors.phone && (
-                      <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.phone}
+                      </p>
                     )}
                   </div>
 

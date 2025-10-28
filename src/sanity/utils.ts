@@ -98,7 +98,7 @@ export async function getBlogPosts(limit?: number): Promise<BlogPostPreview[]> {
 export async function blogPostExists(slug: string): Promise<boolean> {
   try {
     const post = await client.fetch<{ _id: string } | null>(
-      `*[_type == "blogPost" && slug.current == $slug][0] { _id }`,
+      `*[_type == "blogPost" && slug.current == $slug && active == true][0] { _id }`,
       { slug }
     )
     return !!post

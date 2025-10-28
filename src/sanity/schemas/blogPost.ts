@@ -120,6 +120,14 @@ export default defineType({
       initialValue: () => new Date().toISOString(),
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'active',
+      title: 'Active',
+      type: 'boolean',
+      description: 'Toggle to control whether this post is visible on the blog page',
+      initialValue: true,
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     select: {
@@ -127,14 +135,17 @@ export default defineType({
       description: 'description',
       media: 'featuredImage',
       publishedAt: 'publishedAt',
+      active: 'active',
     },
     prepare(selection) {
-      const { title, description, publishedAt } = selection
+      const { title, description, publishedAt, active } = selection
+      const status = active ? 'Active' : 'Inactive'
+      const publishedText = publishedAt ? `Published: ${new Date(publishedAt).toLocaleDateString()}` : 'Not published'
       return {
         title: title || 'Untitled',
         subtitle: description || 'No description',
         media: selection.media,
-        description: publishedAt ? `Published: ${new Date(publishedAt).toLocaleDateString()}` : 'Not published',
+        description: `${status} • ${publishedText}`,
       }
     },
   },

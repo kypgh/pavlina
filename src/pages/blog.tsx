@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import { FadeInUp, FadeInUpImmediate } from '@/components/AnimatedSection'
 import { motion } from 'framer-motion'
 import { GetStaticProps } from 'next'
@@ -216,6 +217,8 @@ export default function Blog({ blogPosts }: BlogProps) {
           </FadeInUp>
         </div>
       </main>
+
+      <Footer />
     </div>
   )
 }

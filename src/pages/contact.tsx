@@ -1,5 +1,6 @@
 import { FadeInUp, FadeInUpImmediate } from '@/components/AnimatedSection'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import { contactContent } from '@/content/siteContent'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -272,6 +273,8 @@ export default function Contact() {
           </FadeInUp>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }

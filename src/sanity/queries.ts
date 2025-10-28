@@ -2,7 +2,7 @@
 
 // Query for blog post listing (preview data)
 export const blogPostsQuery = `
-  *[_type == "blogPost"] | order(publishedAt desc) {
+  *[_type == "blogPost" && active == true] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -14,13 +14,14 @@ export const blogPostsQuery = `
       },
       alt
     },
-    publishedAt
+    publishedAt,
+    active
   }
 `
 
 // Query for individual blog post by slug
 export const blogPostBySlugQuery = `
-  *[_type == "blogPost" && slug.current == $slug][0] {
+  *[_type == "blogPost" && slug.current == $slug && active == true][0] {
     _id,
     title,
     slug,
@@ -34,6 +35,7 @@ export const blogPostBySlugQuery = `
     },
     body,
     publishedAt,
+    active,
     _createdAt,
     _updatedAt
   }
@@ -41,14 +43,14 @@ export const blogPostBySlugQuery = `
 
 // Query for blog post slugs (for static generation)
 export const blogPostSlugsQuery = `
-  *[_type == "blogPost" && defined(slug.current)] {
+  *[_type == "blogPost" && defined(slug.current) && active == true] {
     "slug": slug.current
   }
 `
 
 // Query for published blog posts only
 export const publishedBlogPostsQuery = `
-  *[_type == "blogPost" && publishedAt <= now()] | order(publishedAt desc) {
+  *[_type == "blogPost" && publishedAt <= now() && active == true] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -60,6 +62,7 @@ export const publishedBlogPostsQuery = `
       },
       alt
     },
-    publishedAt
+    publishedAt,
+    active
   }
 `

@@ -84,6 +84,7 @@ export interface BlogPost {
   featuredImage?: SanityImage
   body: PortableTextContent[]
   publishedAt: string
+  active: boolean
 }
 
 // Simplified BlogPost interface for frontend consumption

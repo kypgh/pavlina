@@ -57,7 +57,7 @@ export default function Navigation() {
                     {router.pathname === item.href && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-dark-yellow"
                         initial={false}
                       />
                     )}

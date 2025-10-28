@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
 import { FadeInUp, FadeInUpImmediate } from "@/components/AnimatedSection";
 import { servicesContent } from "@/content/siteContent";
@@ -157,6 +158,7 @@ export default function Services() {
         </div>
       </main>
 
+      <Footer />
       <BookingModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

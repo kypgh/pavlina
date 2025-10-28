@@ -1,6 +1,7 @@
 import { FadeInUp, FadeInUpImmediate } from '@/components/AnimatedSection'
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import BookingModal from '@/components/BookingModal'
 import { homeContent } from '@/content/siteContent'
 import Image from 'next/image'
@@ -92,7 +93,7 @@ export default function Home() {
             <ul className="space-y-6">
               {homeContent.workingTogether.points.map((point, index) => (
                 <li key={index} className="flex items-start gap-4">
-                  <span className="text-yellow text-2xl mt-1">•</span>
+                  <span className="text-dark-yellow text-2xl mt-1">•</span>
                   <p className="text-dark text-lg leading-relaxed flex-1">
                     {point}
                   </p>
@@ -131,6 +132,7 @@ export default function Home() {
         </div>
       </section>
 
+      <Footer />
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
