@@ -93,7 +93,7 @@ export default function Contact() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 bg-cream">
+      <section className="pt-32 pb-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <FadeInUpImmediate>
             <h1 className="text-5xl md:text-7xl font-title text-dark mb-8">
@@ -114,7 +114,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-background">
         <div className="max-w-2xl mx-auto">
           <FadeInUp>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -130,7 +130,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
-                    errors.name ? 'border-red-500' : 'border-sage-green-medium focus:border-yellow'
+                    errors.name ? 'border-red-500' : 'border-text focus:border-yellow'
                   }`}
                   placeholder={contactContent.form.nameLabel}
                 />
@@ -151,7 +151,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
-                    errors.email ? 'border-red-500' : 'border-sage-green-medium focus:border-yellow'
+                    errors.email ? 'border-red-500' : 'border-text focus:border-yellow'
                   }`}
                   placeholder={contactContent.form.emailLabel}
                 />
@@ -173,7 +173,7 @@ export default function Contact() {
                   rows={6}
                   maxLength={1000}
                   className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark resize-none ${
-                    errors.message ? 'border-red-500' : 'border-sage-green-medium focus:border-yellow'
+                    errors.message ? 'border-red-500' : 'border-text focus:border-yellow'
                   }`}
                   placeholder={contactContent.form.messageLabel}
                 />
@@ -207,7 +207,7 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
+                  className="text-center p-4 bg-yellow/20 border border-yellow text-dark rounded-lg"
                 >
                   Το μήνυμά σας στάλθηκε με επιτυχία! Θα επικοινωνήσουμε μαζί σας σύντομα.
                 </motion.div>
@@ -218,7 +218,7 @@ export default function Contact() {
       </section>
 
       {/* Alternative Contact Section */}
-      <section className="py-20 px-6 bg-sage-green">
+      <section className="py-20 px-6 bg-dark">
         <div className="max-w-4xl mx-auto">
           <FadeInUp>
             <h2 className="text-3xl md:text-4xl font-title text-white text-center mb-8">

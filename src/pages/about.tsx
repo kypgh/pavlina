@@ -13,7 +13,7 @@ export default function About() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-sage-green py-20 px-6">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-dark py-20 px-6">
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <FadeInUpImmediate>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-title text-white mb-6">
@@ -31,7 +31,7 @@ export default function About() {
 
       <main>
         {/* Section 1: Η δική μου διαδρομή - With photo */}
-        <section className="bg-cream py-20 px-6">
+        <section className="bg-white py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-center">
               {/* Professional Portrait */}
@@ -45,7 +45,7 @@ export default function About() {
                       className="object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-sage-green-light">
+                    <div className="w-full h-full flex items-center justify-center bg-background">
                       <span className="text-dark font-title text-xl">Professional Portrait</span>
                     </div>
                   )}
@@ -68,7 +68,7 @@ export default function About() {
         </section>
 
         {/* Section 2: Η αναζήτηση */}
-        <section className="bg-white py-20 px-6">
+        <section className="bg-background py-20 px-6">
           <div className="max-w-5xl mx-auto">
             <FadeInUp>
               <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
@@ -86,7 +86,7 @@ export default function About() {
         </section>
 
         {/* Section 3: Σήμερα… */}
-        <section className="bg-soft-yellow-medium py-20 px-6">
+        <section className="bg-white py-20 px-6">
           <div className="max-w-5xl mx-auto">
             <FadeInUp>
               <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
@@ -102,7 +102,7 @@ export default function About() {
         </section>
 
         {/* Section 4: Η φιλοσοφία μου */}
-        <section className="bg-white py-20 px-6">
+        <section className="bg-background py-20 px-6">
           <div className="max-w-5xl mx-auto">
             <FadeInUp>
               <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
@@ -117,8 +117,8 @@ export default function About() {
           </div>
         </section>
 
-        {/* Section 5: Η Αποστολή μου - Green block */}
-        <section className="bg-sage-green py-20 px-6">
+        {/* Section 5: Η Αποστολή μου - Dark block */}
+        <section className="bg-dark py-20 px-6">
           <div className="max-w-5xl mx-auto text-center">
             <FadeInUp>
               <h2 className="text-4xl md:text-5xl font-title text-white mb-10">
@@ -131,8 +131,8 @@ export default function About() {
           </div>
         </section>
 
-        {/* Section 6: Το Όραμά μου - Cream block */}
-        <section className="bg-cream py-20 px-6">
+        {/* Section 6: Το Όραμά μου - White block */}
+        <section className="bg-white py-20 px-6">
           <div className="max-w-5xl mx-auto text-center">
             <FadeInUp>
               <h2 className="text-4xl md:text-5xl font-title text-dark mb-10">
@@ -146,7 +146,7 @@ export default function About() {
         </section>
 
         {/* Section 7: Closing quote with CTA */}
-        <section className="bg-sage-green py-20 px-6">
+        <section className="bg-dark py-20 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <FadeInUp>
               <p className="text-white opacity-95 text-xl md:text-2xl leading-relaxed mb-10 italic">

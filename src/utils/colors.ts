@@ -1,10 +1,10 @@
 export const colors = {
   white: '#fff7e7',
-  background: '#DFC99B',
-  yellow: '#F0C446',
-  darkYellow: '#9E8A3D',
-  text: '#A4935B',
-  dark: '#4D4C1A',
+  background: '#e3e5d2',
+  yellow: '#f7e135',
+  darkYellow: '#ffb000',
+  text: '#667538',
+  dark: '#515d4b',
 } as const
 
 export const fonts = {

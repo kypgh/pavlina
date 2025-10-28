@@ -32,10 +32,10 @@ export default function Navigation() {
                 className="flex items-center"
               >
                 <Image
-                  src="/assets/logo1.png"
+                  src="/assets/logo.svg"
                   alt="Pavlina Logo"
-                  width={80}
-                  height={40}
+                  width={120}
+                  height={60}
                   // className="h-10 w-auto"
                 />
               </motion.div>

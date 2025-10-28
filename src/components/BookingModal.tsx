@@ -138,7 +138,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="bg-sage-green rounded-t-3xl px-8 py-6 relative">
+            <div className="bg-dark rounded-t-3xl px-8 py-6 relative">
               <button
                 onClick={onClose}
                 className="absolute top-6 right-6 text-white hover:text-yellow transition-colors text-2xl"
@@ -203,7 +203,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
                         errors.name
                           ? "border-red-500"
-                          : "border-sage-green-medium focus:border-yellow"
+                          : "border-text focus:border-yellow"
                       }`}
                       placeholder="Το όνομά σου"
                     />
@@ -229,7 +229,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
                         errors.email
                           ? "border-red-500"
-                          : "border-sage-green-medium focus:border-yellow"
+                          : "border-text focus:border-yellow"
                       }`}
                       placeholder="email@example.com"
                     />
@@ -255,7 +255,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
                         errors.phone
                           ? "border-red-500"
-                          : "border-sage-green-medium focus:border-yellow"
+                          : "border-text focus:border-yellow"
                       }`}
                       placeholder="+30 123 456 7890"
                     />
@@ -278,7 +278,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="w-full px-4 py-3 bg-white border-2 border-sage-green-medium rounded-lg focus:outline-none focus:border-yellow transition-colors text-dark resize-none"
+                      className="w-full px-4 py-3 bg-white border-2 border-text rounded-lg focus:outline-none focus:border-yellow transition-colors text-dark resize-none"
                       placeholder="Πες μου λίγα λόγια για εσένα..."
                     />
                   </div>

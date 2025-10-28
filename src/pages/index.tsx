@@ -10,11 +10,11 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 pt-16 relative bg-sage-green">
+      <section className="min-h-screen flex items-center justify-center px-6 pt-16 relative bg-dark">
         <div className="text-center max-w-4xl relative z-10">
           <FadeInUpImmediate>
             <h1 className="text-6xl md:text-8xl font-title text-white mb-6">
@@ -56,7 +56,7 @@ export default function Home() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-dark/50 bg-sage-green-light">
+                  <div className="w-full h-full flex items-center justify-center text-text/50 bg-background">
                     Coach Portrait Placeholder
                   </div>
                 )}
@@ -80,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* Working Together Section */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-20 px-6 bg-background">
         <div className="max-w-4xl mx-auto">
           <FadeInUp>
             <h2 className="text-4xl md:text-5xl font-title text-dark text-center mb-12">
@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       {/* Closing Section */}
-      <section className="py-20 px-6 bg-sage-green">
+      <section className="py-20 px-6 bg-dark">
         <div className="max-w-4xl mx-auto text-center">
           <FadeInUp>
             <p className="text-xl text-white leading-relaxed mb-8 opacity-95">

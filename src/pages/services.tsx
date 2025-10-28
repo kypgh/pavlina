@@ -8,17 +8,17 @@ export default function Services() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-soft-yellow-medium">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       <main className="pt-24 px-6 pb-20">
         {/* Hero Quote Section - Prominent */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <FadeInUpImmediate>
-            <div className="bg-soft-yellow-medium rounded-3xl p-10 md:p-14">
+            <div className="bg-white rounded-3xl p-10 md:p-14 shadow-lg">
               <p className="text-2xl md:text-3xl text-dark italic font-title leading-relaxed">
-                «Κάθε διαδρομή είναι μοναδική. Εδώ θα βρεις τον χώρο και τον
-                χρόνο για να ανακαλύψεις τη δική σου.»
+                Κάθε διαδρομή είναι μοναδική. Εδώ θα βρεις τον χώρο και τον
+                χρόνο για να ανακαλύψεις τη δική σου.
               </p>
             </div>
           </FadeInUpImmediate>
@@ -70,7 +70,7 @@ export default function Services() {
                 <h3 className="text-xl font-semibold text-dark mb-3">
                   Διάρκεια
                 </h3>
-                <p className="text-gray-600">60 λεπτά ανά συνεδρία</p>
+                <p className="text-text">60 λεπτά ανά συνεδρία</p>
               </div>
 
               {/* Format Card */}
@@ -89,7 +89,7 @@ export default function Services() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-dark mb-3">Μορφή</h3>
-                <p className="text-gray-600">Online μέσω Zoom</p>
+                <p className="text-text">Online μέσω Zoom</p>
               </div>
 
               {/* Approach Card */}
@@ -110,7 +110,7 @@ export default function Services() {
                 <h3 className="text-xl font-semibold text-dark mb-3">
                   Προσέγγιση
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-text">
                   Εξατομικευμένη στον δικό σου ρυθμό
                 </p>
               </div>
@@ -118,10 +118,10 @@ export default function Services() {
           </FadeInUp>
         </div>
 
-        {/* Discovery Call Section - Sage Green */}
+        {/* Discovery Call Section - Dark */}
         <div className="max-w-6xl mx-auto mb-16">
           <FadeInUp delay={0.5}>
-            <div className="bg-sage-green rounded-3xl p-12 md:p-16 shadow-xl">
+            <div className="bg-dark rounded-3xl p-12 md:p-16 shadow-xl">
               <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-4xl md:text-5xl font-title text-white mb-8">
                   {servicesContent.discoveryCall.title}
@@ -132,8 +132,8 @@ export default function Services() {
 
                 <div className="border-t border-white/20 pt-8 mt-8">
                   <p className="text-xl md:text-2xl text-white leading-relaxed mb-6 italic opacity-95">
-                    «Αν νιώθεις ότι ήρθε η στιγμή να επενδύσεις στον εαυτό σου,
-                    θα χαρώ να σε γνωρίσω.»
+                    Αν νιώθεις ότι ήρθε η στιγμή να επενδύσεις στον εαυτό σου,
+                    θα χαρώ να σε γνωρίσω.
                   </p>
                   <button
                     onClick={() => setIsModalOpen(true)}
