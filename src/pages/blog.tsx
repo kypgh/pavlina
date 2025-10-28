@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import NewsletterSignup from '@/components/NewsletterSignup'
 import { FadeInUp, FadeInUpImmediate } from '@/components/AnimatedSection'
 import { motion } from 'framer-motion'
 import { GetStaticProps } from 'next'
@@ -192,28 +193,7 @@ export default function Blog({ blogPosts }: BlogProps) {
 
           {/* Newsletter Signup */}
           <FadeInUp delay={0.5}>
-            <div className="mt-20 bg-white rounded-2xl p-8 text-center shadow-lg">
-              <h2 className="text-3xl font-title text-dark mb-4">
-                Subscribe to Our Newsletter
-              </h2>
-              <p className="text-text mb-6">
-                Get notified when we publish new articles and updates.
-              </p>
-              <div className="flex gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-full border-2 border-background focus:border-yellow outline-none"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-yellow hover:bg-dark-yellow text-dark px-6 py-3 rounded-full font-medium transition-colors"
-                >
-                  Subscribe
-                </motion.button>
-              </div>
-            </div>
+            <NewsletterSignup className="mt-20" />
           </FadeInUp>
         </div>
       </main>
