@@ -21,6 +21,7 @@ const config: Config = {
       fontFamily: {
         title: [fonts.title],
         body: [fonts.body],
+        garamond: [fonts.garamond],
       },
     },
   },

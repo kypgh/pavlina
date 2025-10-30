@@ -8,6 +8,7 @@ export const colors = {
 } as const
 
 export const fonts = {
-  title: 'Marta Bold, serif',
-  body: 'Montserrat, sans-serif',
+  title: 'var(--font-eb-garamond), serif',
+  body: 'var(--font-eb-garamond), serif', // Now using EB Garamond for body text too
+  garamond: 'var(--font-eb-garamond), serif',
 } as const

@@ -176,6 +176,9 @@ export default function About() {
 
   // Handle scroll with snap behavior
   useEffect(() => {
+    let touchStartY = 0;
+    let touchStartX = 0;
+
     const handleWheel = (e: WheelEvent) => {
       if (isScrolling) return;
 
@@ -196,10 +199,81 @@ export default function About() {
       setTimeout(() => setIsScrolling(false), 400);
     };
 
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (isScrolling) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const touchEndX = e.changedTouches[0].clientX;
+      const deltaY = touchStartY - touchEndY;
+      const deltaX = touchStartX - touchEndX;
+
+      // Minimum swipe distance to trigger navigation
+      const minSwipeDistance = 50;
+
+      // Determine if it's a vertical or horizontal swipe
+      if (
+        Math.abs(deltaY) > Math.abs(deltaX) &&
+        Math.abs(deltaY) > minSwipeDistance
+      ) {
+        // Vertical swipe
+        e.preventDefault();
+        setIsScrolling(true);
+
+        const direction = deltaY > 0 ? 1 : -1;
+        const newSection = Math.max(
+          0,
+          Math.min(sections.length - 1, currentSection + direction)
+        );
+
+        if (newSection !== currentSection) {
+          setScrollDirection(direction);
+          setCurrentSection(newSection);
+        }
+
+        setTimeout(() => setIsScrolling(false), 400);
+      } else if (
+        Math.abs(deltaX) > Math.abs(deltaY) &&
+        Math.abs(deltaX) > minSwipeDistance
+      ) {
+        // Horizontal swipe
+        e.preventDefault();
+        setIsScrolling(true);
+
+        const direction = deltaX > 0 ? 1 : -1;
+        const newSection = Math.max(
+          0,
+          Math.min(sections.length - 1, currentSection + direction)
+        );
+
+        if (newSection !== currentSection) {
+          setScrollDirection(direction);
+          setCurrentSection(newSection);
+        }
+
+        setTimeout(() => setIsScrolling(false), 400);
+      }
+    };
+
     const container = containerRef.current;
     if (container) {
       container.addEventListener("wheel", handleWheel, { passive: false });
-      return () => container.removeEventListener("wheel", handleWheel);
+      container.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+      });
+      container.addEventListener("touchend", handleTouchEnd, {
+        passive: false,
+      });
+
+      return () => {
+        container.removeEventListener("wheel", handleWheel);
+        container.removeEventListener("touchstart", handleTouchStart);
+        container.removeEventListener("touchend", handleTouchEnd);
+      };
     }
   }, [currentSection, isScrolling, sections.length]);
 

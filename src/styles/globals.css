@@ -15,10 +15,14 @@
   --font-body: "Montserrat", sans-serif;
 }
 
+* {
+  font-family: var(--font-eb-garamond), serif;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: var(--font-body);
+  font-family: var(--font-eb-garamond), serif;
   line-height: 1.6;
 }
 

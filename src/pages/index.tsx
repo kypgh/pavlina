@@ -1,11 +1,11 @@
-import { FadeInUp, FadeInUpImmediate } from '@/components/AnimatedSection'
-import { motion } from 'framer-motion'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
-import BookingModal from '@/components/BookingModal'
-import { homeContent } from '@/content/siteContent'
-import Image from 'next/image'
-import { useState } from 'react'
+import { FadeInUp, FadeInUpImmediate } from "@/components/AnimatedSection";
+import { motion } from "framer-motion";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import BookingModal from "@/components/BookingModal";
+import { homeContent } from "@/content/siteContent";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-6 pt-16 relative bg-dark">
         <div className="text-center max-w-4xl relative z-10">
@@ -22,13 +22,13 @@ export default function Home() {
               {homeContent.hero.title}
             </h1>
           </FadeInUpImmediate>
-          
+
           <FadeInUpImmediate delay={0.2}>
             <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto opacity-95">
               {homeContent.hero.subtitle}
             </p>
           </FadeInUpImmediate>
-          
+
           <FadeInUpImmediate delay={0.4}>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -50,9 +50,9 @@ export default function Home() {
             <FadeInUp>
               <div className="relative h-96 lg:h-[500px] rounded-2xl shadow-lg overflow-hidden">
                 {homeContent.introduction.image ? (
-                  <Image 
-                    src={homeContent.introduction.image} 
-                    alt="Pavlina - Go Bright Coach" 
+                  <Image
+                    src={homeContent.introduction.image}
+                    alt="Pavlina - Go Bright Coach"
                     fill
                     className="object-cover"
                   />
@@ -63,16 +63,21 @@ export default function Home() {
                 )}
               </div>
             </FadeInUp>
-            
+
             {/* Introduction Content */}
             <FadeInUp delay={0.2}>
               <div className="space-y-6">
-                <div className="prose prose-lg max-w-none">
-                  {homeContent.introduction.content.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="text-dark leading-relaxed mb-6">
-                      {paragraph.trim()}
-                    </p>
-                  ))}
+                <div className="prose prose-xl max-w-none">
+                  {homeContent.introduction.content
+                    .split("\n\n")
+                    .map((paragraph, index) => (
+                      <p
+                        key={index}
+                        className="text-dark text-lg leading-relaxed mb-6"
+                      >
+                        {paragraph.trim()}
+                      </p>
+                    ))}
                 </div>
               </div>
             </FadeInUp>
@@ -88,7 +93,7 @@ export default function Home() {
               {homeContent.workingTogether.title}
             </h2>
           </FadeInUp>
-          
+
           <FadeInUp delay={0.2}>
             <ul className="space-y-6">
               {homeContent.workingTogether.points.map((point, index) => (
@@ -112,13 +117,13 @@ export default function Home() {
               {homeContent.closing.content}
             </p>
           </FadeInUp>
-          
+
           <FadeInUp delay={0.2}>
             <p className="text-2xl md:text-3xl font-title text-white italic mb-10">
               {homeContent.closing.quote}
             </p>
           </FadeInUp>
-          
+
           <FadeInUp delay={0.4}>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -133,7 +138,10 @@ export default function Home() {
       </section>
 
       <Footer />
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BookingModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
-  )
+  );
 }
