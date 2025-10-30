@@ -35,10 +35,10 @@ export default function About() {
       id: "journey",
       type: "normal",
       component: (
-        <section className="bg-white min-h-screen flex items-center py-20 px-6">
+        <section className="bg-white min-h-screen flex items-center py-12 px-6 overflow-y-auto">
           <div className="max-w-7xl mx-auto w-full">
-            <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-center">
-              <div className="relative aspect-[3/4] rounded-3xl shadow-2xl overflow-hidden">
+            <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
+              <div className="relative w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-60 lg:w-full lg:h-auto mx-auto lg:max-w-none lg:aspect-[3/4] rounded-2xl lg:rounded-3xl shadow-2xl overflow-hidden">
                 {aboutContent.image ? (
                   <Image
                     src={aboutContent.image}
@@ -48,7 +48,7 @@ export default function About() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-background">
-                    <span className="text-dark font-title text-xl">
+                    <span className="text-dark font-title text-lg lg:text-xl">
                       Professional Portrait
                     </span>
                   </div>
@@ -56,10 +56,10 @@ export default function About() {
               </div>
 
               <div className="lg:col-span-2">
-                <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-title text-dark mb-6 lg:mb-8 text-center lg:text-left">
                   Η δική μου διαδρομή
                 </h2>
-                <p className="text-dark leading-relaxed text-lg md:text-xl">
+                <p className="text-dark leading-relaxed text-base md:text-lg lg:text-xl">
                   {aboutContent.journey}
                 </p>
               </div>
