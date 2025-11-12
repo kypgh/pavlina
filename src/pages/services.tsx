@@ -17,7 +17,7 @@ export default function Services() {
         <div className="px-6 mb-16">
           <div className="max-w-4xl mx-auto text-center">
             <FadeInUpImmediate>
-              <div className="bg-white rounded-3xl p-10 md:p-14 shadow-xl border-2 border-yellow/30">
+              <div className="bg-white rounded-3xl p-10 md:p-14 shadow-xl">
                 <p className="text-2xl md:text-3xl text-dark italic font-title leading-relaxed">
                   Κάθε διαδρομή είναι μοναδική. Εδώ θα βρεις τον χώρο και τον
                   χρόνο για να ανακαλύψεις τη δική σου.
