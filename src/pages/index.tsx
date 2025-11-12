@@ -11,7 +11,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation />
 
       {/* Hero Section */}
@@ -34,7 +34,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsModalOpen(true)}
-              className="bg-yellow hover:bg-dark-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors"
+              className="bg-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors"
             >
               {homeContent.hero.cta}
             </motion.button>
@@ -57,7 +57,7 @@ export default function Home() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-text/50 bg-background">
+                  <div className="w-full h-full flex items-center justify-center text-text/50 bg-white">
                     Coach Portrait Placeholder
                   </div>
                 )}
@@ -86,7 +86,7 @@ export default function Home() {
       </section>
 
       {/* Working Together Section */}
-      <section className="py-20 px-6 bg-background">
+      <section className="py-20 px-6 bg-light-green">
         <div className="max-w-4xl mx-auto">
           <FadeInUp>
             <h2 className="text-4xl md:text-5xl font-title text-dark text-center mb-12">
@@ -129,7 +129,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsModalOpen(true)}
-              className="bg-yellow hover:bg-dark-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors"
+              className="bg-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors"
             >
               {homeContent.closing.cta}
             </motion.button>

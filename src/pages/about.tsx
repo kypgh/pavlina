@@ -47,7 +47,7 @@ export default function About() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-background">
+                  <div className="w-full h-full flex items-center justify-center bg-white">
                     <span className="text-dark font-title text-lg lg:text-xl">
                       Professional Portrait
                     </span>
@@ -57,11 +57,18 @@ export default function About() {
 
               <div className="lg:col-span-2">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-title text-dark mb-6 lg:mb-8 text-center lg:text-left">
-                  Η δική μου διαδρομή
+                  Η Διαδρομή μου
                 </h2>
-                <p className="text-dark leading-relaxed text-base md:text-lg lg:text-xl">
-                  {aboutContent.journey}
-                </p>
+                <div className="space-y-6">
+                  {aboutContent.journey.split("\n\n").map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className="text-dark leading-relaxed text-base md:text-lg lg:text-xl"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -69,16 +76,16 @@ export default function About() {
       ),
     },
     {
-      id: "search",
+      id: "today",
       type: "slide",
-      bg: "bg-background",
+      bg: "bg-light-green",
       component: (
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
-            Η αναζήτηση
+            Σήμερα...
           </h2>
           <div className="prose prose-xl max-w-none">
-            {aboutContent.search.split("\n\n").map((paragraph, index) => (
+            {aboutContent.today.split("\n\n").map((paragraph, index) => (
               <p
                 key={index}
                 className="text-dark leading-relaxed mb-8 text-lg md:text-xl"
@@ -91,26 +98,9 @@ export default function About() {
       ),
     },
     {
-      id: "today",
-      type: "slide",
-      bg: "bg-white",
-      component: (
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
-            Σήμερα…
-          </h2>
-          <div className="prose prose-xl max-w-none">
-            <p className="text-dark leading-relaxed text-lg md:text-xl">
-              {aboutContent.today}
-            </p>
-          </div>
-        </div>
-      ),
-    },
-    {
       id: "philosophy",
       type: "slide",
-      bg: "bg-background",
+      bg: "bg-white",
       component: (
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
@@ -178,25 +168,51 @@ export default function About() {
   useEffect(() => {
     let touchStartY = 0;
     let touchStartX = 0;
+    let scrollTimeout: NodeJS.Timeout | null = null;
+    let accumulatedDelta = 0;
+    const scrollThreshold = 50; // Minimum accumulated scroll to trigger section change
+    const debounceDelay = 150; // Time to wait for scroll to settle
 
     const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      
       if (isScrolling) return;
 
-      e.preventDefault();
-      setIsScrolling(true);
+      // Accumulate scroll delta
+      accumulatedDelta += e.deltaY;
 
-      const direction = e.deltaY > 0 ? 1 : -1;
-      const newSection = Math.max(
-        0,
-        Math.min(sections.length - 1, currentSection + direction)
-      );
-
-      if (newSection !== currentSection) {
-        setScrollDirection(direction);
-        setCurrentSection(newSection);
+      // Clear existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
       }
 
-      setTimeout(() => setIsScrolling(false), 400);
+      // Set new timeout to process the scroll
+      scrollTimeout = setTimeout(() => {
+        // Check if accumulated scroll exceeds threshold
+        if (Math.abs(accumulatedDelta) > scrollThreshold) {
+          setIsScrolling(true);
+
+          const direction = accumulatedDelta > 0 ? 1 : -1;
+          const newSection = Math.max(
+            0,
+            Math.min(sections.length - 1, currentSection + direction)
+          );
+
+          if (newSection !== currentSection) {
+            setScrollDirection(direction);
+            setCurrentSection(newSection);
+          }
+
+          // Reset accumulated delta
+          accumulatedDelta = 0;
+
+          // Longer cooldown period to prevent rapid section changes
+          setTimeout(() => setIsScrolling(false), 800);
+        } else {
+          // Reset if below threshold
+          accumulatedDelta = 0;
+        }
+      }, debounceDelay);
     };
 
     const handleTouchStart = (e: TouchEvent) => {
@@ -235,7 +251,7 @@ export default function About() {
           setCurrentSection(newSection);
         }
 
-        setTimeout(() => setIsScrolling(false), 400);
+        setTimeout(() => setIsScrolling(false), 800);
       } else if (
         Math.abs(deltaX) > Math.abs(deltaY) &&
         Math.abs(deltaX) > minSwipeDistance
@@ -255,7 +271,7 @@ export default function About() {
           setCurrentSection(newSection);
         }
 
-        setTimeout(() => setIsScrolling(false), 400);
+        setTimeout(() => setIsScrolling(false), 800);
       }
     };
 

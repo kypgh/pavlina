@@ -86,7 +86,7 @@ export default function NewsletterSignup({ className = "" }: NewsletterSignupPro
             className={`px-6 py-3 rounded-full font-medium transition-colors ${
               isSubmitting
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-yellow hover:bg-dark-yellow text-dark"
+                : "bg-yellow text-dark"
             }`}
           >
             {isSubmitting ? "..." : "Subscribe"}

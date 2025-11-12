@@ -7,7 +7,7 @@ import { contactContent } from '@/content/siteContent'
 export default function Contact() {
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -32,7 +32,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-6 bg-background">
+      <section className="py-20 px-6 bg-light-green">
         <div className="max-w-2xl mx-auto">
           <FadeInUp>
             <ContactForm />

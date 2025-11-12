@@ -79,7 +79,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
   // Show loading state during static generation
   if (router.isFallback) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
         <Navigation />
         <main className="pt-24 px-6">
           <div className="max-w-4xl mx-auto">
@@ -98,7 +98,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
   // Handle 404 case for non-existent blog posts
   if (!post) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
         <Navigation />
         <main className="pt-24 px-6">
           <div className="max-w-4xl mx-auto">
@@ -145,7 +145,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation />
       
       <main className="pt-24 px-6">

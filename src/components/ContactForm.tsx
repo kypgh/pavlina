@@ -8,9 +8,9 @@ interface ContactFormProps {
   className?: string;
 }
 
-export default function ContactForm({ 
+export default function ContactForm({
   onSuccess,
-  className = ""
+  className = "",
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -81,10 +81,10 @@ export default function ContactForm({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/booking', {
-        method: 'POST',
+      const response = await fetch("/api/booking", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -92,7 +92,7 @@ export default function ContactForm({
       if (response.ok) {
         setSubmitSuccess(true);
         setFormData({ name: "", email: "", phone: "", message: "" });
-        
+
         if (onSuccess) {
           setTimeout(() => {
             onSuccess();
@@ -104,11 +104,11 @@ export default function ContactForm({
           }, 5000);
         }
       } else {
-        throw new Error('Failed to send message');
+        throw new Error("Failed to send message");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Υπήρξε πρόβλημα με την αποστολή. Παρακαλώ δοκιμάστε ξανά.');
+      console.error("Error submitting form:", error);
+      alert("Υπήρξε πρόβλημα με την αποστολή. Παρακαλώ δοκιμάστε ξανά.");
     } finally {
       setIsSubmitting(false);
     }
@@ -150,10 +150,7 @@ export default function ContactForm({
     <form onSubmit={handleSubmit} className={`space-y-5 ${className}`}>
       {/* Name Field */}
       <div>
-        <label
-          htmlFor="name"
-          className="block text-dark font-medium mb-2"
-        >
+        <label htmlFor="name" className="block text-dark font-medium mb-2">
           Όνομα *
         </label>
         <input
@@ -163,9 +160,7 @@ export default function ContactForm({
           value={formData.name}
           onChange={handleChange}
           className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
-            errors.name
-              ? "border-red-500"
-              : "border-text focus:border-yellow"
+            errors.name ? "border-red-500" : "border-text focus:border-yellow"
           }`}
           placeholder="Το όνομά σου"
         />
@@ -176,10 +171,7 @@ export default function ContactForm({
 
       {/* Email Field */}
       <div>
-        <label
-          htmlFor="email"
-          className="block text-dark font-medium mb-2"
-        >
+        <label htmlFor="email" className="block text-dark font-medium mb-2">
           Email *
         </label>
         <input
@@ -189,25 +181,18 @@ export default function ContactForm({
           value={formData.email}
           onChange={handleChange}
           className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
-            errors.email
-              ? "border-red-500"
-              : "border-text focus:border-yellow"
+            errors.email ? "border-red-500" : "border-text focus:border-yellow"
           }`}
           placeholder="email@example.com"
         />
         {errors.email && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.email}
-          </p>
+          <p className="text-red-500 text-sm mt-1">{errors.email}</p>
         )}
       </div>
 
       {/* Phone Field */}
       <div>
-        <label
-          htmlFor="phone"
-          className="block text-dark font-medium mb-2"
-        >
+        <label htmlFor="phone" className="block text-dark font-medium mb-2">
           Τηλέφωνο *
         </label>
         <input
@@ -217,25 +202,18 @@ export default function ContactForm({
           value={formData.phone}
           onChange={handleChange}
           className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none transition-colors text-dark ${
-            errors.phone
-              ? "border-red-500"
-              : "border-text focus:border-yellow"
+            errors.phone ? "border-red-500" : "border-text focus:border-yellow"
           }`}
           placeholder="+30 123 456 7890"
         />
         {errors.phone && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.phone}
-          </p>
+          <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
         )}
       </div>
 
       {/* Message Field */}
       <div>
-        <label
-          htmlFor="message"
-          className="block text-dark font-medium mb-2"
-        >
+        <label htmlFor="message" className="block text-dark font-medium mb-2">
           Μήνυμα (προαιρετικό)
         </label>
         <textarea
@@ -259,7 +237,7 @@ export default function ContactForm({
           className={`w-full py-4 rounded-full font-semibold text-lg transition-colors shadow-lg ${
             isSubmitting
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-yellow hover:bg-dark-yellow text-dark"
+              : "bg-yellow text-dark"
           }`}
         >
           {isSubmitting ? "Αποστολή..." : "Αποστολή Αιτήματος"}

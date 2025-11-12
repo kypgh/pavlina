@@ -9,7 +9,7 @@ interface LayoutProps {
 
 export default function Layout({ children, className = '' }: LayoutProps) {
   return (
-    <div className={`min-h-screen bg-background ${className}`}>
+    <div className={`min-h-screen bg-white ${className}`}>
       <Navigation />
       <main className="pt-16">
         {children}

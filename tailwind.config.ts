@@ -12,7 +12,7 @@ const config: Config = {
       colors: {
         // Use colors from colors.ts
         white: colors.white,
-        background: colors.background,
+        "light-green": colors.lightGreen,
         yellow: colors.yellow,
         "dark-yellow": colors.darkYellow,
         text: colors.text,

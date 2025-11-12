@@ -2,7 +2,7 @@ import { socialConfig } from "@/config/social";
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-text/20 py-12 mt-16">
+    <footer className="bg-white border-t border-text/20 py-12 mt-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
           {/* Social Links */}

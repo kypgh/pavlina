@@ -73,26 +73,31 @@ function BlogPostImage({
 export default function Blog({ blogPosts }: BlogProps) {
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-light-green">
       <Navigation />
       
       <main className="pt-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <FadeInUpImmediate>
-              <h1 className="text-5xl md:text-6xl font-title text-dark mb-8">
-                Blog
-              </h1>
-            </FadeInUpImmediate>
-            
-            <FadeInUpImmediate delay={0.2}>
-              <p className="text-xl text-text max-w-2xl mx-auto">
-                Stay updated with our latest thoughts, insights, and news. 
-                Articles and updates will be published here regularly.
-              </p>
-            </FadeInUpImmediate>
+        {/* Hero Section with light green background */}
+        <div className="bg-light-green -mx-6 px-6 py-16 mb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center">
+              <FadeInUpImmediate>
+                <h1 className="text-5xl md:text-6xl font-title text-dark mb-8">
+                  Blog
+                </h1>
+              </FadeInUpImmediate>
+              
+              <FadeInUpImmediate delay={0.2}>
+                <p className="text-xl text-text max-w-2xl mx-auto">
+                  Stay updated with our latest thoughts, insights, and news. 
+                  Articles and updates will be published here regularly.
+                </p>
+              </FadeInUpImmediate>
+            </div>
           </div>
+        </div>
 
+        <div className="max-w-6xl mx-auto">
           {blogPosts.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.map((post, index) => (
@@ -191,10 +196,15 @@ export default function Blog({ blogPosts }: BlogProps) {
             </FadeInUp>
           )}
 
-          {/* Newsletter Signup */}
-          <FadeInUp delay={0.5}>
-            <NewsletterSignup className="mt-20" />
-          </FadeInUp>
+        </div>
+
+        {/* Newsletter Signup with light green background */}
+        <div className="bg-light-green -mx-6 px-6 py-16 mt-20">
+          <div className="max-w-6xl mx-auto">
+            <FadeInUp delay={0.5}>
+              <NewsletterSignup />
+            </FadeInUp>
+          </div>
         </div>
       </main>
 

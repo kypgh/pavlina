@@ -9,50 +9,55 @@ export default function Services() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-light-green">
       <Navigation />
 
-      <main className="pt-24 px-6 pb-20">
-        {/* Hero Quote Section - Prominent */}
-        <div className="max-w-4xl mx-auto mb-16 text-center">
-          <FadeInUpImmediate>
-            <div className="bg-white rounded-3xl p-10 md:p-14 shadow-lg">
-              <p className="text-2xl md:text-3xl text-dark italic font-title leading-relaxed">
-                Κάθε διαδρομή είναι μοναδική. Εδώ θα βρεις τον χώρο και τον
-                χρόνο για να ανακαλύψεις τη δική σου.
-              </p>
-            </div>
-          </FadeInUpImmediate>
+      <main className="pt-24 pb-20">
+        {/* Hero Quote Section - Prominent with border */}
+        <div className="px-6 mb-16">
+          <div className="max-w-4xl mx-auto text-center">
+            <FadeInUpImmediate>
+              <div className="bg-white rounded-3xl p-10 md:p-14 shadow-xl border-2 border-yellow/30">
+                <p className="text-2xl md:text-3xl text-dark italic font-title leading-relaxed">
+                  Κάθε διαδρομή είναι μοναδική. Εδώ θα βρεις τον χώρο και τον
+                  χρόνο για να ανακαλύψεις τη δική σου.
+                </p>
+              </div>
+            </FadeInUpImmediate>
+          </div>
         </div>
 
         {/* Main Content Section */}
-        <div className="max-w-5xl mx-auto mb-20">
-          <FadeInUpImmediate delay={0.2}>
-            <h1 className="text-5xl md:text-6xl font-title text-dark mb-12 text-center">
-              {servicesContent.title}
-            </h1>
-          </FadeInUpImmediate>
+        <div className="px-6 mb-20">
+          <div className="max-w-5xl mx-auto">
+            <FadeInUpImmediate delay={0.2}>
+              <h1 className="text-5xl md:text-6xl font-title text-dark mb-12 text-center">
+                {servicesContent.title}
+              </h1>
+            </FadeInUpImmediate>
 
-          <FadeInUpImmediate delay={0.3}>
-            <div className="text-lg md:text-xl text-dark leading-relaxed max-w-4xl mx-auto">
-              {servicesContent.description
-                .split("\n\n")
-                .map((paragraph, index) => (
-                  <p key={index} className="mb-6 last:mb-0">
-                    {paragraph}
-                  </p>
-                ))}
-            </div>
-          </FadeInUpImmediate>
+            <FadeInUpImmediate delay={0.3}>
+              <div className="text-lg md:text-xl text-dark leading-relaxed max-w-4xl mx-auto">
+                {servicesContent.description
+                  .split("\n\n")
+                  .map((paragraph, index) => (
+                    <p key={index} className="mb-6 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+              </div>
+            </FadeInUpImmediate>
+          </div>
         </div>
 
-        {/* Session Details Section */}
-        <div className="max-w-6xl mx-auto mb-20">
-          <FadeInUp delay={0.4}>
-            <h2 className="text-3xl md:text-4xl font-title text-dark mb-12 text-center">
-              Λεπτομέρειες Συνεδριών
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+        {/* Session Details Section - Full Width */}
+        <div className="py-16 mb-20 bg-text/5">
+          <div className="px-6">
+            <FadeInUp delay={0.4}>
+              <h2 className="text-3xl md:text-4xl font-title text-dark mb-12 text-center">
+                Λεπτομέρειες Συνεδριών
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {/* Duration Card */}
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="w-16 h-16 bg-yellow rounded-xl flex items-center justify-center mb-6">
@@ -115,13 +120,15 @@ export default function Services() {
                   Εξατομικευμένη στον δικό σου ρυθμό
                 </p>
               </div>
-            </div>
-          </FadeInUp>
+              </div>
+            </FadeInUp>
+          </div>
         </div>
 
         {/* Discovery Call Section - Dark */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <FadeInUp delay={0.5}>
+        <div className="px-6 mb-16">
+          <div className="max-w-6xl mx-auto">
+            <FadeInUp delay={0.5}>
             <div className="bg-dark rounded-3xl p-12 md:p-16 shadow-xl">
               <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-4xl md:text-5xl font-title text-white mb-8">
@@ -138,23 +145,26 @@ export default function Services() {
                   </p>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="bg-yellow text-dark px-12 py-5 rounded-full font-semibold text-xl hover:bg-dark-yellow transition-all duration-300 hover:scale-105 shadow-lg"
+                    className="bg-yellow text-dark px-12 py-5 rounded-full font-semibold text-xl transition-all duration-300 hover:scale-105 shadow-lg"
                   >
                     {servicesContent.cta}
                   </button>
                 </div>
               </div>
-            </div>
-          </FadeInUp>
+              </div>
+            </FadeInUp>
+          </div>
         </div>
 
         {/* Approach Note */}
-        <div className="max-w-4xl mx-auto text-center">
-          <FadeInUp delay={0.7}>
-            <p className="text-lg md:text-xl text-dark italic">
-              {servicesContent.approach}
-            </p>
-          </FadeInUp>
+        <div className="px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <FadeInUp delay={0.7}>
+              <p className="text-lg md:text-xl text-dark italic">
+                {servicesContent.approach}
+              </p>
+            </FadeInUp>
+          </div>
         </div>
       </main>
 

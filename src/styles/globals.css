@@ -4,12 +4,12 @@
 @theme {
   /* Colors from colors.ts */
   --color-white: #fff7e7;
-  --color-background: #e3e5d2;
+  --color-light-green: #e3e5d2;
   --color-yellow: #f7e135;
   --color-dark-yellow: #ffb000;
   --color-text: #667538;
   --color-dark: #515d4b;
-  
+
   /* Typography */
   --font-title: "Marta Bold", serif;
   --font-body: "Montserrat", sans-serif;
@@ -20,7 +20,7 @@
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-white);
   color: var(--color-text);
   font-family: var(--font-eb-garamond), serif;
   line-height: 1.6;
@@ -39,7 +39,6 @@ body {
 }
 
 .btn-yellow:hover {
-  background-color: var(--color-dark-yellow);
   transform: translateY(-2px);
 }
 

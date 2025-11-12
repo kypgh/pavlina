@@ -22,9 +22,9 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-background">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-light-green">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/">
               <motion.div
@@ -34,8 +34,8 @@ export default function Navigation() {
                 <Image
                   src="/assets/logo.svg"
                   alt="Pavlina Logo"
-                  width={120}
-                  height={60}
+                  width={180}
+                  height={80}
                   // className="h-10 w-auto"
                 />
               </motion.div>
@@ -70,7 +70,7 @@ export default function Navigation() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsModalOpen(true)}
-                className="bg-yellow hover:bg-dark-yellow text-dark px-6 py-2 rounded-full font-medium transition-colors"
+                className="bg-yellow text-dark px-6 py-2 rounded-full font-medium transition-colors"
               >
                 Book Discovery Call
               </motion.button>
