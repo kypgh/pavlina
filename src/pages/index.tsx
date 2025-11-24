@@ -9,6 +9,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(1);
 
   return (
     <div className="min-h-screen bg-white">
@@ -48,19 +49,20 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Coach Portrait Image */}
             <FadeInUp>
-              <div className="relative h-96 lg:h-[500px] rounded-2xl shadow-lg overflow-hidden">
-                {homeContent.introduction.image ? (
+              <div>
+                <div 
+                  className="relative h-96 lg:h-[500px] rounded-2xl shadow-lg overflow-hidden cursor-pointer"
+                  onClick={() => setCurrentImageIndex((prev) => (prev % 7) + 1)}
+                  title="Click to change image"
+                >
                   <Image
-                    src={homeContent.introduction.image}
+                    src={`/assets/img${currentImageIndex}.jpg`}
                     alt="Pavlina - Go Bright Coach"
                     fill
                     className="object-cover"
                   />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-text/50 bg-white">
-                    Coach Portrait Placeholder
-                  </div>
-                )}
+                </div>
+                <p className="text-center text-sm text-gray-500 mt-2">Image {currentImageIndex}/7</p>
               </div>
             </FadeInUp>
 

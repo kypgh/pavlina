@@ -24,7 +24,7 @@ export default function Navigation() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-light-green">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-26">
             {/* Logo */}
             <Link href="/">
               <motion.div
@@ -34,8 +34,8 @@ export default function Navigation() {
                 <Image
                   src="/assets/logo.svg"
                   alt="Pavlina Logo"
-                  width={180}
-                  height={80}
+                  width={240}
+                  height={100}
                   // className="h-10 w-auto"
                 />
               </motion.div>

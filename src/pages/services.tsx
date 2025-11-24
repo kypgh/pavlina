@@ -12,7 +12,7 @@ export default function Services() {
     <div className="min-h-screen bg-light-green">
       <Navigation />
 
-      <main className="pt-24 pb-20">
+      <main className="pt-30 pb-20">
         {/* Hero Quote Section - Prominent with border */}
         <div className="px-6 mb-16">
           <div className="max-w-4xl mx-auto text-center">
@@ -152,17 +152,6 @@ export default function Services() {
                 </div>
               </div>
               </div>
-            </FadeInUp>
-          </div>
-        </div>
-
-        {/* Approach Note */}
-        <div className="px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <FadeInUp delay={0.7}>
-              <p className="text-lg md:text-xl text-dark italic">
-                {servicesContent.approach}
-              </p>
             </FadeInUp>
           </div>
         </div>

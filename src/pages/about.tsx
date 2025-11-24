@@ -1,154 +1,145 @@
 import Navigation from "@/components/Navigation";
 import BookingModal from "@/components/BookingModal";
-
 import { aboutContent } from "@/content/siteContent";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState(1); // 1 for forward, -1 for backward
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(1);
 
-  // Sections data for easier management
-  const sections = [
-    {
-      id: "hero",
-      type: "normal",
-      component: (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark py-20 px-6">
-          <div className="relative z-10 text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-title text-white mb-6">
-              {aboutContent.hero.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto leading-relaxed opacity-95">
-              {aboutContent.hero.subtitle}
-            </p>
-          </div>
-        </section>
-      ),
-    },
-    {
-      id: "journey",
-      type: "normal",
-      component: (
-        <section className="bg-white min-h-screen flex items-center py-12 px-6 overflow-y-auto">
-          <div className="max-w-7xl mx-auto w-full">
-            <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
-              <div className="relative w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-60 lg:w-full lg:h-auto mx-auto lg:max-w-none lg:aspect-[3/4] rounded-2xl lg:rounded-3xl shadow-2xl overflow-hidden">
-                {aboutContent.image ? (
-                  <Image
-                    src={aboutContent.image}
-                    alt="Pavlina - Professional Portrait"
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-white">
-                    <span className="text-dark font-title text-lg lg:text-xl">
-                      Professional Portrait
-                    </span>
-                  </div>
-                )}
+  return (
+    <div className="bg-white">
+      <Navigation />
+
+      {/* Hero Section */}
+      <section className="relative bg-dark py-20 px-6">
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-title text-white mb-6 mt-10">
+            {aboutContent.hero.title}
+          </h1>
+          <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto leading-relaxed opacity-95">
+            {aboutContent.hero.subtitle}
+          </p>
+        </div>
+      </section>
+
+      {/* Journey Section - Image Left, Text Right */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
+            <div>
+              <div 
+                className="relative w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-60 lg:w-full lg:h-auto mx-auto lg:max-w-none lg:aspect-[3/4] rounded-2xl lg:rounded-3xl shadow-2xl overflow-hidden cursor-pointer"
+                onClick={() => setCurrentImageIndex((prev) => (prev % 7) + 1)}
+                title="Click to change image"
+              >
+                <Image
+                  src={`/assets/img${currentImageIndex}.jpg`}
+                  alt="Pavlina - Professional Portrait"
+                  fill
+                  className="object-cover"
+                />
               </div>
+              <p className="text-center text-sm text-gray-500 mt-2">Image {currentImageIndex}/7</p>
+            </div>
 
-              <div className="lg:col-span-2">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-title text-dark mb-6 lg:mb-8 text-center lg:text-left">
-                  Η Διαδρομή μου
-                </h2>
-                <div className="space-y-6">
-                  {aboutContent.journey.split("\n\n").map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className="text-dark leading-relaxed text-base md:text-lg lg:text-xl"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-title text-dark mb-6 lg:mb-8 text-center lg:text-left">
+                Η Διαδρομή μου
+              </h2>
+              <div className="space-y-6">
+                {aboutContent.journey.split("\n\n").map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-dark leading-relaxed text-base md:text-lg lg:text-xl"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
-        </section>
-      ),
-    },
-    {
-      id: "today",
-      type: "slide",
-      bg: "bg-light-green",
-      component: (
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
-            Σήμερα...
-          </h2>
-          <div className="prose prose-xl max-w-none">
-            {aboutContent.today.split("\n\n").map((paragraph, index) => (
-              <p
-                key={index}
-                className="text-dark leading-relaxed mb-8 text-lg md:text-xl"
-              >
-                {paragraph}
+        </div>
+      </section>
+
+      {/* Today Section - Text Right */}
+      <section className="bg-light-green py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="lg:order-2">
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+                Σήμερα...
+              </h2>
+              <div className="space-y-6">
+                {aboutContent.today.split("\n\n").map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-dark leading-relaxed text-lg md:text-xl"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className="lg:order-1"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy Section - Text Left */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+                Η φιλοσοφία μου
+              </h2>
+              <p className="text-dark leading-relaxed text-lg md:text-xl">
+                {aboutContent.philosophy}
               </p>
-            ))}
+            </div>
+            <div></div>
           </div>
         </div>
-      ),
-    },
-    {
-      id: "philosophy",
-      type: "slide",
-      bg: "bg-white",
-      component: (
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-title text-dark mb-10 text-center">
-            Η φιλοσοφία μου
-          </h2>
-          <div className="prose prose-xl max-w-none">
-            <p className="text-dark leading-relaxed text-lg md:text-xl">
-              {aboutContent.philosophy}
-            </p>
+      </section>
+
+      {/* Mission Section - Text Right */}
+      <section className="bg-dark py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="lg:order-2">
+              <h2 className="text-4xl md:text-5xl font-title text-white mb-8">
+                Η Αποστολή μου
+              </h2>
+              <p className="text-white opacity-95 leading-relaxed text-xl md:text-2xl">
+                {aboutContent.mission}
+              </p>
+            </div>
+            <div className="lg:order-1"></div>
           </div>
         </div>
-      ),
-    },
-    {
-      id: "mission",
-      type: "slide",
-      bg: "bg-dark",
-      component: (
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-title text-white mb-10">
-            Η Αποστολή μου
-          </h2>
-          <p className="text-white opacity-95 leading-relaxed text-xl md:text-2xl">
-            {aboutContent.mission}
-          </p>
+      </section>
+
+      {/* Vision Section - Text Left */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+                Το Όραμά μου
+              </h2>
+              <p className="text-dark leading-relaxed text-xl md:text-2xl">
+                {aboutContent.vision}
+              </p>
+            </div>
+            <div></div>
+          </div>
         </div>
-      ),
-    },
-    {
-      id: "vision",
-      type: "slide",
-      bg: "bg-white",
-      component: (
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-title text-dark mb-10">
-            Το Όραμά μου
-          </h2>
-          <p className="text-dark leading-relaxed text-xl md:text-2xl">
-            {aboutContent.vision}
-          </p>
-        </div>
-      ),
-    },
-    {
-      id: "closing",
-      type: "slide",
-      bg: "bg-dark",
-      component: (
+      </section>
+
+      {/* Closing Section - Centered */}
+      <section className="bg-dark py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-white opacity-95 text-xl md:text-2xl leading-relaxed mb-10 italic">
             {aboutContent.closingQuote}
@@ -160,219 +151,7 @@ export default function About() {
             Κλείσε τη συνεδρία σου τώρα!
           </button>
         </div>
-      ),
-    },
-  ];
-
-  // Handle scroll with snap behavior
-  useEffect(() => {
-    let touchStartY = 0;
-    let touchStartX = 0;
-    let scrollTimeout: NodeJS.Timeout | null = null;
-    let accumulatedDelta = 0;
-    const scrollThreshold = 50; // Minimum accumulated scroll to trigger section change
-    const debounceDelay = 150; // Time to wait for scroll to settle
-
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      
-      if (isScrolling) return;
-
-      // Accumulate scroll delta
-      accumulatedDelta += e.deltaY;
-
-      // Clear existing timeout
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-
-      // Set new timeout to process the scroll
-      scrollTimeout = setTimeout(() => {
-        // Check if accumulated scroll exceeds threshold
-        if (Math.abs(accumulatedDelta) > scrollThreshold) {
-          setIsScrolling(true);
-
-          const direction = accumulatedDelta > 0 ? 1 : -1;
-          const newSection = Math.max(
-            0,
-            Math.min(sections.length - 1, currentSection + direction)
-          );
-
-          if (newSection !== currentSection) {
-            setScrollDirection(direction);
-            setCurrentSection(newSection);
-          }
-
-          // Reset accumulated delta
-          accumulatedDelta = 0;
-
-          // Longer cooldown period to prevent rapid section changes
-          setTimeout(() => setIsScrolling(false), 800);
-        } else {
-          // Reset if below threshold
-          accumulatedDelta = 0;
-        }
-      }, debounceDelay);
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-      touchStartX = e.touches[0].clientX;
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      if (isScrolling) return;
-
-      const touchEndY = e.changedTouches[0].clientY;
-      const touchEndX = e.changedTouches[0].clientX;
-      const deltaY = touchStartY - touchEndY;
-      const deltaX = touchStartX - touchEndX;
-
-      // Minimum swipe distance to trigger navigation
-      const minSwipeDistance = 50;
-
-      // Determine if it's a vertical or horizontal swipe
-      if (
-        Math.abs(deltaY) > Math.abs(deltaX) &&
-        Math.abs(deltaY) > minSwipeDistance
-      ) {
-        // Vertical swipe
-        e.preventDefault();
-        setIsScrolling(true);
-
-        const direction = deltaY > 0 ? 1 : -1;
-        const newSection = Math.max(
-          0,
-          Math.min(sections.length - 1, currentSection + direction)
-        );
-
-        if (newSection !== currentSection) {
-          setScrollDirection(direction);
-          setCurrentSection(newSection);
-        }
-
-        setTimeout(() => setIsScrolling(false), 800);
-      } else if (
-        Math.abs(deltaX) > Math.abs(deltaY) &&
-        Math.abs(deltaX) > minSwipeDistance
-      ) {
-        // Horizontal swipe
-        e.preventDefault();
-        setIsScrolling(true);
-
-        const direction = deltaX > 0 ? 1 : -1;
-        const newSection = Math.max(
-          0,
-          Math.min(sections.length - 1, currentSection + direction)
-        );
-
-        if (newSection !== currentSection) {
-          setScrollDirection(direction);
-          setCurrentSection(newSection);
-        }
-
-        setTimeout(() => setIsScrolling(false), 800);
-      }
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener("wheel", handleWheel, { passive: false });
-      container.addEventListener("touchstart", handleTouchStart, {
-        passive: true,
-      });
-      container.addEventListener("touchend", handleTouchEnd, {
-        passive: false,
-      });
-
-      return () => {
-        container.removeEventListener("wheel", handleWheel);
-        container.removeEventListener("touchstart", handleTouchStart);
-        container.removeEventListener("touchend", handleTouchEnd);
-      };
-    }
-  }, [currentSection, isScrolling, sections.length]);
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (isScrolling) return;
-
-      if (e.key === "ArrowDown" || e.key === " ") {
-        e.preventDefault();
-        setScrollDirection(1);
-        setCurrentSection((prev) => Math.min(sections.length - 1, prev + 1));
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setScrollDirection(-1);
-        setCurrentSection((prev) => Math.max(0, prev - 1));
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isScrolling, sections.length]);
-
-  return (
-    <div
-      ref={containerRef}
-      className="h-screen overflow-hidden bg-white fixed inset-0"
-      style={{
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
-        WebkitOverflowScrolling: "touch",
-      }}
-    >
-      <style jsx>{`
-        div::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
-      <Navigation />
-
-      {/* Unified animation system for all sections */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSection}
-          initial={
-            currentSection <= 1
-              ? {
-                  y: scrollDirection > 0 ? "-100%" : "100%",
-                  x: 0,
-                }
-              : {
-                  x: scrollDirection > 0 ? "100%" : "-100%",
-                  y: 0,
-                }
-          }
-          animate={{ x: 0, y: 0 }}
-          exit={
-            currentSection <= 1
-              ? {
-                  y: scrollDirection > 0 ? "100%" : "-100%",
-                  x: 0,
-                }
-              : {
-                  x: scrollDirection > 0 ? "-100%" : "100%",
-                  y: 0,
-                }
-          }
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="absolute inset-0 overflow-hidden"
-        >
-          {currentSection <= 1 ? (
-            // Render vertical sections as full sections
-            sections[currentSection].component
-          ) : (
-            // Render horizontal sections with proper styling
-            <section
-              className={`w-full h-full flex items-center justify-center py-20 px-6 ${sections[currentSection].bg}`}
-            >
-              {sections[currentSection].component}
-            </section>
-          )}
-        </motion.div>
-      </AnimatePresence>
+      </section>
 
       <BookingModal
         isOpen={isModalOpen}
