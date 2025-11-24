@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
 import { aboutContent } from "@/content/siteContent";
 import Image from "next/image";
@@ -153,6 +154,7 @@ export default function About() {
         </div>
       </section>
 
+      <Footer />
       <BookingModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
