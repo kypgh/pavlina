@@ -7,7 +7,6 @@ import { useState } from "react";
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(1);
 
   return (
     <div className="bg-white">
@@ -30,19 +29,14 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
             <div>
-              <div 
-                className="relative w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-60 lg:w-full lg:h-auto mx-auto lg:max-w-none lg:aspect-[3/4] rounded-2xl lg:rounded-3xl shadow-2xl overflow-hidden cursor-pointer"
-                onClick={() => setCurrentImageIndex((prev) => (prev % 7) + 1)}
-                title="Click to change image"
-              >
+              <div className="relative w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-60 lg:w-full lg:h-auto mx-auto lg:max-w-none lg:aspect-[3/4] rounded-2xl lg:rounded-3xl shadow-2xl overflow-hidden">
                 <Image
-                  src={`/assets/img${currentImageIndex}.jpg`}
+                  src="/assets/img3.jpg"
                   alt="Pavlina - Professional Portrait"
                   fill
                   className="object-cover"
                 />
               </div>
-              <p className="text-center text-sm text-gray-500 mt-2">Image {currentImageIndex}/7</p>
             </div>
 
             <div className="lg:col-span-2">
@@ -67,9 +61,9 @@ export default function About() {
       {/* Today Section - Text Right */}
       <section className="bg-light-green py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:order-2">
-              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+          <div className="grid grid-cols-1 gap-12 items-center text-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8 text-center">
                 Σήμερα...
               </h2>
               <div className="space-y-6">
@@ -83,7 +77,7 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <div className="lg:order-1"></div>
+            <div></div>
           </div>
         </div>
       </section>
@@ -91,9 +85,9 @@ export default function About() {
       {/* Philosophy Section - Text Left */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 gap-12 items-center text-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8 text-center">
                 Η φιλοσοφία μου
               </h2>
               <p className="text-dark leading-relaxed text-lg md:text-xl">
@@ -108,26 +102,26 @@ export default function About() {
       {/* Mission Section - Text Right */}
       <section className="bg-dark py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:order-2">
-              <h2 className="text-4xl md:text-5xl font-title text-white mb-8">
+          <div className="grid grid-cols-1 gap-12 items-center text-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-title text-white mb-8 text-center">
                 Η Αποστολή μου
               </h2>
               <p className="text-white opacity-95 leading-relaxed text-xl md:text-2xl">
                 {aboutContent.mission}
               </p>
             </div>
-            <div className="lg:order-1"></div>
+            <div></div>
           </div>
         </div>
       </section>
 
       {/* Vision Section - Text Left */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-light-green py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 gap-12 items-center text-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8">
+              <h2 className="text-4xl md:text-5xl font-title text-dark mb-8 text-center">
                 Το Όραμά μου
               </h2>
               <p className="text-dark leading-relaxed text-xl md:text-2xl">

@@ -9,15 +9,17 @@ import { useState } from "react";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(1);
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 pt-16 relative bg-dark">
-        <div className="text-center max-w-4xl relative z-10">
+      <section
+        className="min-h-screen flex items-center justify-start px-6 pt-16 relative bg-dark bg-contain bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/assets/hero-bg2.jpg')" }}
+      >
+        <div className="text-left max-w-4xl w-full md:w-1/2 relative z-10 md:pl-28 lg:pl-40">
           <FadeInUpImmediate>
             <h1 className="text-6xl md:text-8xl font-title text-white mb-6">
               {homeContent.hero.title}
@@ -50,19 +52,14 @@ export default function Home() {
             {/* Coach Portrait Image */}
             <FadeInUp>
               <div>
-                <div 
-                  className="relative h-96 lg:h-[500px] rounded-2xl shadow-lg overflow-hidden cursor-pointer"
-                  onClick={() => setCurrentImageIndex((prev) => (prev % 7) + 1)}
-                  title="Click to change image"
-                >
+                <div className="relative h-96 lg:h-[500px] rounded-2xl shadow-lg overflow-hidden">
                   <Image
-                    src={`/assets/img${currentImageIndex}.jpg`}
+                    src="/assets/img7.jpg"
                     alt="Pavlina - Go Bright Coach"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <p className="text-center text-sm text-gray-500 mt-2">Image {currentImageIndex}/7</p>
               </div>
             </FadeInUp>
 
@@ -72,14 +69,22 @@ export default function Home() {
                 <div className="prose prose-xl max-w-none">
                   {homeContent.introduction.content
                     .split("\n\n")
-                    .map((paragraph, index) => (
-                      <p
-                        key={index}
-                        className="text-dark text-lg leading-relaxed mb-6"
-                      >
-                        {paragraph.trim()}
-                      </p>
-                    ))}
+                    .map((paragraph, index) => {
+                      const trimmed = paragraph.trim();
+                      const isSpecial =
+                        trimmed ===
+                        "Κατέκτησε τη ζωή που θες - ξεκινώντας από εσένα.";
+                      return (
+                        <p
+                          key={index}
+                          className={`text-dark text-lg leading-relaxed mb-6 ${
+                            isSpecial ? "text-center italic" : ""
+                          }`}
+                        >
+                          {trimmed}
+                        </p>
+                      );
+                    })}
                 </div>
               </div>
             </FadeInUp>
@@ -120,21 +125,21 @@ export default function Home() {
             </p>
           </FadeInUp>
 
-          <FadeInUp delay={0.2}>
-            <p className="text-2xl md:text-3xl font-title text-white italic mb-10">
-              {homeContent.closing.quote}
-            </p>
-          </FadeInUp>
-
           <FadeInUp delay={0.4}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsModalOpen(true)}
-              className="bg-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors"
+              className="bg-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors mb-10"
             >
               {homeContent.closing.cta}
             </motion.button>
+          </FadeInUp>
+
+          <FadeInUp delay={0.2}>
+            <p className="text-2xl md:text-3xl font-title text-white italic ">
+              {homeContent.closing.quote}
+            </p>
           </FadeInUp>
         </div>
       </section>

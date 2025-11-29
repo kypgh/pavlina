@@ -3,7 +3,7 @@
 
 @theme {
   /* Colors from colors.ts */
-  --color-white: #fff7e7;
+  --color-white: #ffffff;
   --color-light-green: #e3e5d2;
   --color-yellow: #f7e135;
   --color-dark-yellow: #ffb000;
@@ -66,3 +66,5 @@ select:focus {
   border-color: var(--color-yellow);
   box-shadow: 0 0 0 3px rgba(247, 225, 53, 0.2);
 }
+
+/* Center text for all sections by default */
