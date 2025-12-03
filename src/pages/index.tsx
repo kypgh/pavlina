@@ -16,12 +16,11 @@ export default function Home() {
 
       {/* Hero Section */}
       <section
-        className="min-h-screen flex items-center justify-start px-6 pt-16 relative bg-dark bg-contain bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/assets/hero-bg2.jpg')" }}
+        className="min-h-screen flex items-center justify-center md:justify-start px-6 pt-16 relative bg-dark md:bg-cover md:bg-center md:bg-no-repeat md:bg-[url('/assets/herobg.jpg')]"
       >
-        <div className="text-left max-w-4xl w-full md:w-1/2 relative z-10 md:pl-28 lg:pl-40">
+        <div className="text-center md:text-left max-w-4xl w-full md:w-1/2 relative z-10 md:pl-28 lg:pl-40">
           <FadeInUpImmediate>
-            <h1 className="text-6xl md:text-8xl font-title text-white mb-6">
+            <h1 className="text-6xl md:text-6xl font-title text-white mb-6">
               {homeContent.hero.title}
             </h1>
           </FadeInUpImmediate>
@@ -37,7 +36,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsModalOpen(true)}
-              className="bg-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors"
+              className="bg-yellow text-dark px-8 py-4 rounded-full font-medium text-lg transition-colors mx-auto md:mx-0"
             >
               {homeContent.hero.cta}
             </motion.button>

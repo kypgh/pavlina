@@ -59,8 +59,8 @@ export default function Services() {
               </h2>
               <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {/* Duration Card */}
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <div className="w-16 h-16 bg-yellow rounded-xl flex items-center justify-center mb-6">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <div className="w-16 h-16 bg-yellow rounded-xl flex items-center justify-center mb-6 mx-auto">
                     <svg
                       className="w-8 h-8 text-dark"
                       fill="currentColor"
@@ -80,8 +80,8 @@ export default function Services() {
                 </div>
 
                 {/* Format Card */}
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <div className="w-16 h-16 bg-yellow rounded-xl flex items-center justify-center mb-6">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <div className="w-16 h-16 bg-yellow rounded-xl flex items-center justify-center mb-6 mx-auto">
                     <svg
                       className="w-8 h-8 text-dark"
                       fill="currentColor"
@@ -101,8 +101,8 @@ export default function Services() {
                 </div>
 
                 {/* Approach Card */}
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <div className="w-16 h-16 bg-yellow rounded-xl flex items-center justify-center mb-6">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <div className="w-16 h-16 bg-yellow rounded-xl flex items-center justify-center mb-6 mx-auto">
                     <svg
                       className="w-8 h-8 text-dark"
                       fill="currentColor"
