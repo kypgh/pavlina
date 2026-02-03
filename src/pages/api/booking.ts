@@ -22,7 +22,7 @@ export default async function handler(
     console.log('Sending email to:', process.env.BOOKING_EMAIL)
     
     const result = await resend.emails.send({
-      from: 'Go Bright Coaching <email.pavlinakatsalifi.com>', // Replace yourdomain.com with your actual domain
+      from: 'Go Bright Coaching <noreply@email.pavlinakatsalifi.com>', // Replace yourdomain.com with your actual domain
       to: [process.env.BOOKING_EMAIL!], // Your email where you want to receive bookings
       subject: 'New Booking Request - Go Bright Coaching',
       html: `
